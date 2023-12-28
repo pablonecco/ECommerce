@@ -23,7 +23,7 @@
     </tr>
     </tbody>
 </table>
-<form action="#" th:action="@{/personas/}" th:object="${persona}" method="post">
+<form action="#" th:action="@{/personas/create}" th:object="${persona}" method="post">
     <p>Nombre: <input type="text" th:field="*{nombre}" /></p>
     <p>Apellido: <input type="text" th:field="*{apellido}" /></p>
     <p>DNI: <input type="text" th:field="*{dni}" /></p>

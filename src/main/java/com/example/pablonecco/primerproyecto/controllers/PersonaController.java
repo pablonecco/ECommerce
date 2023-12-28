@@ -29,7 +29,7 @@ public class PersonaController {
         return mV;
     }
 
-    @PostMapping("/")
+    @PostMapping("/create")
     public RedirectView create (@ModelAttribute("persona") PersonaModel personaModel) {
         personaService.insertOrUpdate(personaModel);
         return new RedirectView(ViewRouteHelper.R_PERSONA);
