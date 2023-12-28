@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrate</title>
+</head>
+<body>
+<form action="#" th:action="@{mostrarpersona}" th:object="${persona}" method="post">
+    <p>Nombre: <input type="text" th:field="*{nombre}" /></p>
+    <p>Apellido: <input type="text" th:field="*{apellido}" /></p>
+    <p>Dni: <input type="text" th:field="*{dni}" /></p>
+    <input type="submit"/></form>
+</body>
+</html>
