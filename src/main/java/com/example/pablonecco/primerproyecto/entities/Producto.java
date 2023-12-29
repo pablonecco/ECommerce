@@ -26,6 +26,9 @@ public class Producto {
     @Column(name="precio")
     private float precio;
 
+    @Column(name="imagen")
+    private String imagen;
+
     @Column(name="createdat", nullable = false, updatable = false)
     @CreationTimestamp
     private LocalDateTime createdAt;
