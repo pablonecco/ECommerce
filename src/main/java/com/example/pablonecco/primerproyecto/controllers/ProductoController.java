@@ -46,17 +46,17 @@ public class ProductoController {
     public RedirectView create (@ModelAttribute ("producto") ProductoModel productoModel, @RequestParam("file")MultipartFile imagen) {
 
         if (!imagen.isEmpty()) {
+            String nombreArchivo = (productoModel.getNombre() + System.currentTimeMillis()+imagen.getOriginalFilename());
             Path directorioImagenes = Paths.get("src//main//resources//static/images");
             String rutaAbsoluta = directorioImagenes.toFile().getAbsolutePath();
             try{
                 byte[] bytesImg = imagen.getBytes();
-                Path rutaCompleta = Paths.get(rutaAbsoluta + "//" + imagen.getOriginalFilename());
+                Path rutaCompleta = Paths.get(rutaAbsoluta + "//" + nombreArchivo);
                 Files.write(rutaCompleta, bytesImg);
-                productoModel.setImagen(imagen.getOriginalFilename());
+                productoModel.setImagen(nombreArchivo);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
         }
         productoService.insertOrUpdate(productoModel);
         return new RedirectView(ViewRouteHelper.R_CREAR_PRODUCTOS);
@@ -64,6 +64,12 @@ public class ProductoController {
 
     @PostMapping("/delete/{id}")
     public RedirectView delete (@PathVariable("id") int id) {
+        Path directorioImagen = Paths.get("src//main//resources//static/images/"+productoService.findById(id).getImagen());
+        try{
+            Files.delete(directorioImagen);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         productoService.remove(id);
         return new RedirectView(ViewRouteHelper.R_CREAR_PRODUCTOS);
     }
