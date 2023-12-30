@@ -11,4 +11,5 @@ public class ProductoModel {
     private int stock;
     private float precio;
     private String imagen;
+    private String descripcion;
 }

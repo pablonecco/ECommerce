@@ -18,7 +18,7 @@
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="#!">Mi ECommerce</a>
+        <a class="navbar-brand" th:href="@{/productos/}">Mi ECommerce</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
@@ -67,6 +67,7 @@
     <p>Producto: <input type="text" th:field="*{nombre}" /></p>
     <p>Precio: <input type="text" th:field="*{precio}" /></p>
     <p>Stock: <input type="text" th:field="*{stock}" /></p>
+    <p>Descripcion: <input type="text" th:field="*{descripcion}" /></p>
     <p>Imagen: <input type="file" name="file"/></p>
     <button type="submit">Guardar</button>
 </form>

@@ -29,6 +29,9 @@ public class Producto {
     @Column(name="imagen")
     private String imagen;
 
+    @Column(name="descripcion")
+    private String descripcion;
+
     @Column(name="createdat", nullable = false, updatable = false)
     @CreationTimestamp
     private LocalDateTime createdAt;
