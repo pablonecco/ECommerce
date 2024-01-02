@@ -1,22 +1,26 @@
 package com.example.pablonecco.primerproyecto.services.implementation;
 
 import com.example.pablonecco.primerproyecto.entities.ItemCarrito;
+import com.example.pablonecco.primerproyecto.models.ItemCarritoModel;
 import com.example.pablonecco.primerproyecto.repositories.IItemCarritoRepository;
 import com.example.pablonecco.primerproyecto.services.IItemCarritoService;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.ModelMap;
 
 import java.util.List;
 
 @Service("itemCarritoService")
 public class ItemCarritoService implements IItemCarritoService {
     private IItemCarritoRepository itemCarritoRepository;
-    public ItemCarrito findById (int id) {
-        return itemCarritoRepository.findById(id);
+    private ModelMapper modelMapper = new ModelMapper();
+    public ItemCarritoModel findById (int id) {
+        return modelMapper.map(itemCarritoRepository.findById(id), ItemCarritoModel.class);
     }
 
-    public ItemCarrito insertOrUpdate (ItemCarrito itemCarrito) {
-        itemCarritoRepository.save(itemCarrito);
-        return itemCarrito;
+    public ItemCarritoModel insertOrUpdate (ItemCarritoModel itemCarritoModel) {
+        itemCarritoRepository.save(modelMapper.map(itemCarritoModel, ItemCarrito.class));
+        return itemCarritoModel;
     }
 
     public List<ItemCarrito> getAll () {
