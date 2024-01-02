@@ -6,10 +6,10 @@ import com.example.pablonecco.primerproyecto.models.ProductoModel;
 import java.util.List;
 
 public interface IProductoService {
-    public ProductoModel findById (int id);
-    public List<Producto> getAll();
-    public ProductoModel insertOrUpdate (ProductoModel productoModel);
-    public boolean remove (int id);
+    public abstract ProductoModel findById (int id);
+    public abstract List<Producto> getAll();
+    public abstract ProductoModel insertOrUpdate (ProductoModel productoModel);
+    public abstract boolean remove (int id);
 
 
 }

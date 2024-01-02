@@ -49,7 +49,7 @@
                 <div class="row gx-4 gx-lg-5 align-items-center">
                     <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" th:src="@{'/images/' + ${producto.imagen}}" alt="..." /></div>
                     <div class="col-md-6">
-                        <div class="small mb-1">SKU: BST-498</div>
+                        <div class="small mb-1" th:text="'Stock disponible: ' + ${producto.stock}">SKU: BST-498</div>
                         <h1 class="display-5 fw-bolder" th:text="${producto.nombre}"></h1>
                         <div class="fs-5 mb-5">
                             <span th:text="'$' + ${producto.precio}"></span>
