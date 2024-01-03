@@ -1,11 +1,15 @@
 package com.example.pablonecco.primerproyecto.controllers;
 
 import ch.qos.logback.core.model.Model;
+import com.example.pablonecco.primerproyecto.entities.Carrito;
 import com.example.pablonecco.primerproyecto.entities.Producto;
 import com.example.pablonecco.primerproyecto.helpers.ViewRouteHelper;
+import com.example.pablonecco.primerproyecto.models.CarritoModel;
 import com.example.pablonecco.primerproyecto.models.PersonaModel;
 import com.example.pablonecco.primerproyecto.models.ProductoModel;
+import com.example.pablonecco.primerproyecto.services.ICarritoService;
 import com.example.pablonecco.primerproyecto.services.IProductoService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -25,6 +29,12 @@ public class ProductoController {
     @Autowired
     @Qualifier("productoService")
     private IProductoService productoService;
+
+    @Autowired
+    @Qualifier("carritoService")
+    private ICarritoService carritoService;
+
+    private ModelMapper modelMapper = new ModelMapper();
 
     @GetMapping("/")
     public ModelAndView listarProductos () {

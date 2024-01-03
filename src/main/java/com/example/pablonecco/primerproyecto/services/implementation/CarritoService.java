@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service("carritoService")
 public class CarritoService implements ICarritoService {
     @Autowired
@@ -19,6 +21,10 @@ public class CarritoService implements ICarritoService {
 
     public CarritoModel findById (int id) {
         return modelMapper.map(carritoRepository.findById(id), CarritoModel.class);
+    }
+
+    public List<Carrito> getAll () {
+        return carritoRepository.findAll();
     }
 
     public CarritoModel insertOrUpdate (CarritoModel carritoModel) {
