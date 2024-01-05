@@ -15,4 +15,6 @@ public interface ICarritoService {
     public abstract boolean remove (int id);
     public abstract ItemCarritoModel agregarItem (Producto producto, int cantidad);
     public abstract int calcularItems ();
+    public abstract float calcularTotal();
+
     }

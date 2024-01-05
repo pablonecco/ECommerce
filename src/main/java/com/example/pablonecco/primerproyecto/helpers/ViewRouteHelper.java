@@ -9,6 +9,7 @@ public class ViewRouteHelper {
     public final static String PRODUCTOS = "productos/index";
     public final static String PRODUCTO = "productos/producto";
     public final static String CREAR_PRODUCTOS = "productos/crear";
+    public final static String CARRITO = "carrito/carrito";
 
 
     //redirects
@@ -16,6 +17,8 @@ public class ViewRouteHelper {
     public final static String R_PERSONA = "/personas/";
     public final static String R_PRODUCTOS = "/productos/";
     public final static String R_CREAR_PRODUCTOS = "/productos/crear";
+    public final static String R_CARRITO = "/carrito/";
+
 
 
 }

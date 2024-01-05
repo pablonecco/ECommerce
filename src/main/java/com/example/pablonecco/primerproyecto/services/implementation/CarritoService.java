@@ -73,4 +73,13 @@ public class CarritoService implements ICarritoService {
         }
         return cantidad;
     }
+
+    public float calcularTotal () {
+        float total = 0;
+        Carrito carrito = carritoRepository.findAll().get(0);
+        for (ItemCarrito item : carrito.getItems()) {
+            total = total + item.getProducto().getPrecio()*item.getCantidad();
+        }
+        return total;
+    }
 }

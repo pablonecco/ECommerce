@@ -34,11 +34,11 @@
                         </li>
                     </ul>
                     <form class="d-flex">
-                        <button class="btn btn-outline-dark" type="submit">
+                        <a class="btn btn-outline-dark" th:href="@{/carrito/}">
                             <i class="bi-cart-fill me-1"></i>
                             Cart
                             <span class="badge bg-dark text-white ms-1 rounded-pill" th:text="${cantidad_carrito}"></span>
-                        </button>
+                        </a>
                     </form>
                 </div>
             </div>
@@ -84,5 +84,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="../../../../../../../startbootstrap-shop-item-gh-pages/js/scripts.js"></script>
+
     </body>
 </html>
