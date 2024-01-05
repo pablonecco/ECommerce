@@ -50,6 +50,14 @@ public class CarritoService implements ICarritoService {
             carritoRepository.save(carrito);
         }
         Carrito carrito = carritoRepository.findAll().get(0);
+
+        for (ItemCarrito item : carrito.getItems()) {
+            if (item.getProducto().getId()== producto.getId()) {
+                item.setCantidad(item.getCantidad()+cantidad);
+                return modelMapper.map(item, ItemCarritoModel.class);
+            }
+        }
+
         ItemCarritoModel itemCarrito = new ItemCarritoModel ();
         itemCarrito.setCarrito(carrito);
         itemCarrito.setCantidad(cantidad);
