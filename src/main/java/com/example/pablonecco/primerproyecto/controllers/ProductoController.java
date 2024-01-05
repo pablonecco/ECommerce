@@ -46,7 +46,10 @@ public class ProductoController {
         ModelAndView mV = new ModelAndView(ViewRouteHelper.PRODUCTOS);
         mV.addObject("productos", productoService.getAll());
         mV.addObject("producto", new Producto());
-        return mV;
+        mV.addObject("cantidad_carrito", carritoService.calcularItems());
+        //itemCarritoService.eliminarItems();
+        //System.out.println(carritoService.calcularItems());
+       return mV;
     }
 
     @GetMapping("/crear")
@@ -54,6 +57,7 @@ public class ProductoController {
         ModelAndView mV = new ModelAndView(ViewRouteHelper.CREAR_PRODUCTOS);
         mV.addObject("productos", productoService.getAll());
         mV.addObject("producto", new Producto());
+        mV.addObject("cantidad_carrito", carritoService.calcularItems());
         return mV;
     }
 
@@ -93,14 +97,17 @@ public class ProductoController {
     public ModelAndView verProducto (@PathVariable("id") int id) {
         ModelAndView mV = new ModelAndView(ViewRouteHelper.PRODUCTO);
         mV.addObject("producto", productoService.findById(id));
+        mV.addObject("cantidad_carrito", carritoService.calcularItems());
         return mV;
     }
 
     @PostMapping("/producto/{id}/alcarro")
     public String alCarro (@PathVariable("id") int id, @RequestParam("cantidad") int cantidad, RedirectAttributes attributes) {
-        if (productoService.findById(id).getStock()<cantidad || cantidad<=0) {
+        if (productoService.findById(id).getStock()<cantidad) {
             attributes.addFlashAttribute("error", "Stock insuficiente");
-        } else {
+        } else if (cantidad<=0) {
+            attributes.addFlashAttribute("error", "No puedes agregar una cantidad menor a 0");
+        }else {
             itemCarritoService.insertOrUpdate(carritoService.agregarItem(modelMapper.map(productoService.findById(id), Producto.class), cantidad));
             productoService.actualizarStock(id, cantidad);
             attributes.addFlashAttribute("success", "Se ha hagregado al carrito");

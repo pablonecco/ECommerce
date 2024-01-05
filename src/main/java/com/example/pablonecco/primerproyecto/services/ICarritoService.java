@@ -14,4 +14,5 @@ public interface ICarritoService {
     public abstract CarritoModel insertOrUpdate (CarritoModel carritoModel);
     public abstract boolean remove (int id);
     public abstract ItemCarritoModel agregarItem (Producto producto, int cantidad);
-}
+    public abstract int calcularItems ();
+    }
