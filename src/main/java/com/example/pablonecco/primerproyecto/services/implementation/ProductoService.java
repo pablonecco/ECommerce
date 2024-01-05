@@ -40,4 +40,11 @@ public class ProductoService implements IProductoService {
             return false;
         }
     }
+
+    public void actualizarStock (int id, int cantidad) {
+        Producto producto = productoRepository.findById(id);
+        producto.setStock(producto.getStock()-cantidad);
+        productoRepository.save(producto);
+    }
+
 }

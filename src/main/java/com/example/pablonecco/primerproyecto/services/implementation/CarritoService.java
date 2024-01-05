@@ -1,7 +1,10 @@
 package com.example.pablonecco.primerproyecto.services.implementation;
 
 import com.example.pablonecco.primerproyecto.entities.Carrito;
+import com.example.pablonecco.primerproyecto.entities.ItemCarrito;
+import com.example.pablonecco.primerproyecto.entities.Producto;
 import com.example.pablonecco.primerproyecto.models.CarritoModel;
+import com.example.pablonecco.primerproyecto.models.ItemCarritoModel;
 import com.example.pablonecco.primerproyecto.repositories.ICarritoRepository;
 import com.example.pablonecco.primerproyecto.services.ICarritoService;
 import org.modelmapper.ModelMapper;
@@ -40,4 +43,18 @@ public class CarritoService implements ICarritoService {
             return false;
         }
     }
+
+    public ItemCarritoModel agregarItem (Producto producto, int cantidad) {
+        if (carritoRepository.findAll().isEmpty()) {
+            Carrito carrito = new Carrito();
+            carritoRepository.save(carrito);
+        }
+        Carrito carrito = carritoRepository.findAll().get(0);
+        ItemCarritoModel itemCarrito = new ItemCarritoModel ();
+        itemCarrito.setCarrito(carrito);
+        itemCarrito.setCantidad(cantidad);
+        itemCarrito.setProducto(producto);
+        return itemCarrito;
+    }
+
 }

@@ -43,6 +43,16 @@
                 </div>
             </div>
         </nav>
+
+        <!-- MENSAJES -->
+        <div class="alert alert-success alert-dismissable" th:if="${success != null}">
+            <label th:text="${success}"></label>
+        </div>
+
+        <div class="alert alert-warning alert-dismissable" th:if="${error != null}">
+            <label th:text="${error}"></label>
+        </div>
+
         <!-- Product section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 my-5">
@@ -55,13 +65,13 @@
                             <span th:text="'$' + ${producto.precio}"></span>
                         </div>
                         <p class="lead"><span th:text="${producto.descripcion}"></span></p>
-                        <div class="d-flex">
-                            <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                            <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                        <form th:action="@{/productos/producto/{id}/alcarro(id=${producto.id})}" method="post"><div class="d-flex">
+                            <input class="form-control text-center me-3" id="inputQuantity" name="cantidad" type="number" value="1" style="max-width: 3rem" />
+                            <button class="btn btn-outline-dark flex-shrink-0" type="submit">
                                 <i class="bi-cart-fill me-1"></i>
                                 Add to cart
                             </button>
-                        </div>
+                        </div></form>
                     </div>
                 </div>
             </div>

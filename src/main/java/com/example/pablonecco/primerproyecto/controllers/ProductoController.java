@@ -9,6 +9,7 @@ import com.example.pablonecco.primerproyecto.models.PersonaModel;
 import com.example.pablonecco.primerproyecto.models.ProductoModel;
 import com.example.pablonecco.primerproyecto.services.ICarritoService;
 import com.example.pablonecco.primerproyecto.services.IProductoService;
+import com.example.pablonecco.primerproyecto.services.implementation.ItemCarritoService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.io.IOException;
@@ -33,6 +35,9 @@ public class ProductoController {
     @Autowired
     @Qualifier("carritoService")
     private ICarritoService carritoService;
+    @Autowired
+    @Qualifier("itemCarritoService")
+    private ItemCarritoService itemCarritoService;
 
     private ModelMapper modelMapper = new ModelMapper();
 
@@ -89,6 +94,18 @@ public class ProductoController {
         ModelAndView mV = new ModelAndView(ViewRouteHelper.PRODUCTO);
         mV.addObject("producto", productoService.findById(id));
         return mV;
+    }
+
+    @PostMapping("/producto/{id}/alcarro")
+    public String alCarro (@PathVariable("id") int id, @RequestParam("cantidad") int cantidad, RedirectAttributes attributes) {
+        if (productoService.findById(id).getStock()<cantidad || cantidad<=0) {
+            attributes.addFlashAttribute("error", "Stock insuficiente");
+        } else {
+            itemCarritoService.insertOrUpdate(carritoService.agregarItem(modelMapper.map(productoService.findById(id), Producto.class), cantidad));
+            productoService.actualizarStock(id, cantidad);
+            attributes.addFlashAttribute("success", "Se ha hagregado al carrito");
+        }
+        return "redirect:/productos/producto/"+id;
     }
 
 }

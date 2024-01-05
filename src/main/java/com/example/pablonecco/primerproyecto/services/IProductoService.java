@@ -10,6 +10,7 @@ public interface IProductoService {
     public abstract List<Producto> getAll();
     public abstract ProductoModel insertOrUpdate (ProductoModel productoModel);
     public abstract boolean remove (int id);
+    public abstract void actualizarStock (int id, int cantidad);
 
 
 }
