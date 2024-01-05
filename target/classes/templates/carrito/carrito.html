@@ -44,6 +44,10 @@
   </div>
 </nav>
 
+<div class="mx-auto p-2" style="width: 200px;">
+  <span class="badge rounded-pill text-bg-success" th:text="'Precio total: $' + ${total}"></span>
+</div>
+
 <!-- Section-->
 <section class="py-5">
   <div class="container px-4 px-lg-5 mt-5">
@@ -73,8 +77,8 @@
     </div>
   </div>
   <!-- Info-->
-  <p class="fs-5 text-dark ml-2" th:text="'Precio total: $' + ${total}"></p>
-  <p class="fs-5 text-dark ml-2" th:text="'Cantidad de productos: ' + ${cantidad_carrito}"></p>
+  <!--  <p class="fs-5 text-dark ml-2" th:text="'Precio total: $' + ${total}"></p>
+   <p class="fs-5 text-dark ml-2" th:text="'Cantidad de productos: ' + ${cantidad_carrito}"></p>-->
 
 </section>
 
