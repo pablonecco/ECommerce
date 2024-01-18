@@ -1,7 +1,6 @@
 package com.example.pablonecco.primerproyecto.controllers;
 
 import com.example.pablonecco.primerproyecto.helpers.ViewRouteHelper;
-import com.example.pablonecco.primerproyecto.models.PersonaModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
