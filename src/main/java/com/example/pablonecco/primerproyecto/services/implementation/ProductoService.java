@@ -19,8 +19,8 @@ public class ProductoService implements IProductoService {
 
     private ModelMapper modelMapper = new ModelMapper();
 
-    public ProductoModel findById (int id) {
-        return modelMapper.map(productoRepository.findById(id), ProductoModel.class);
+    public Producto findById (int id) {
+        return productoRepository.findById(id);
     }
 
     public List<Producto> getAll () {

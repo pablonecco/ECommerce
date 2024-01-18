@@ -1,11 +1,7 @@
 package com.example.pablonecco.primerproyecto.controllers;
 
-import ch.qos.logback.core.model.Model;
-import com.example.pablonecco.primerproyecto.entities.Carrito;
 import com.example.pablonecco.primerproyecto.entities.Producto;
 import com.example.pablonecco.primerproyecto.helpers.ViewRouteHelper;
-import com.example.pablonecco.primerproyecto.models.CarritoModel;
-import com.example.pablonecco.primerproyecto.models.PersonaModel;
 import com.example.pablonecco.primerproyecto.models.ProductoModel;
 import com.example.pablonecco.primerproyecto.services.ICarritoService;
 import com.example.pablonecco.primerproyecto.services.IProductoService;
